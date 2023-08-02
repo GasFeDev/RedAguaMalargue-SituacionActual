@@ -1,0 +1,151 @@
+@import './buttons.css';
+
+:root {
+  --Primary: #43DDE6;
+  --White: #ffffff;
+}
+
+body {
+  background-color: var(--Primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+  margin: auto;
+  max-inline-size: 900px;
+}
+
+/* Estilos para el contenedor del video */
+.player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.player video {
+  width: auto;
+  height: 90%;
+  object-fit: cover;
+  max-width: 90vw;
+}
+
+.player video:fullscreen {
+  width: auto;
+  height: 80%;
+  object-fit: cover;
+  max-width: 90vw;
+}
+
+.player-actions {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.player-title {
+  position: absolute;
+  color: #ffffff;
+  inset-block-start: 0;
+  font-size:medium;
+  inset-inline-start: 20px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.player-progress {
+  display: flex;
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.player-progress input {
+  flex: 1;
+  padding: 10px;
+}
+
+.player-overlay {
+ opacity: 0; 
+ transition: .3s opacity;
+}
+
+.player.show-controls .player-overlay {
+  opacity: 1;
+}
+
+.player:hover .player-overlay{
+  opacity: 1;
+}
+
+/* Estilos para el contenedor */
+.fullscreen-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Estilos para el botón */
+#fullscreen {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#fullscreen:hover {
+  background-color: #555;
+}
+
+/* Estilos para el botón de pantalla completa */
+#fullscreen svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .player video {
+    width: auto;
+    height: 60%;
+    object-fit: cover;
+  }
+
+  .player video:fullscreen {
+    object-fit: cover;
+  }
+  .player-title {
+    font-size:small;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .player-title {
+    font-size:x-small;
+  }
+}
+
